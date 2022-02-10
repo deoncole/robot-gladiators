@@ -165,7 +165,7 @@ var startGame = function(){
         fight(pickedEnemyObj);
 
         //if player is still alive and we're not at the last enemy in the array
-        if (playerInfo.health > 0 && i < enemyNames.length - 1){
+        if (playerInfo.health > 0 && i < enemyInfo.length - 1){
             // ask if player wants to use the store before next round
             var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
 
@@ -210,21 +210,19 @@ var endGame = function (){
 var shop = function (){
     // ask player what they'd like to do
   var shopOptionPrompt = window.prompt(
-    "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+    "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
   );
 
   // use switch to carry out action
-switch (shopOptionPrompt) {
-    case "REFILL":
-    case "refill":
+  shopOptionPrompt = parseInt(shopOptionPrompt);
+  switch (shopOptionPrompt) {
+    case 1:
         playerInfo.refillHealth();
         break;
-    case "UPGRADE":
-    case "upgrade":
+    case 2:
         playerInfo.upgradeAttack();
         break;
-    case "LEAVE":
-    case "leave":
+    case 3:
       window.alert("Leaving the store.");
   
       // do nothing, so function will end
